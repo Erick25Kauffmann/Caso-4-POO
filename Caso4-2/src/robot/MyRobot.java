@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class MyRobot extends IRobot{
-	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4\\src\\Imagen\\";
+	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4-2\\src\\Imagen\\";
 	public int RobotType;
 	public String RobotImage;
 	public boolean isAlive = true;
@@ -75,7 +75,7 @@ public class MyRobot extends IRobot{
 		}
 		else if(RobotType == 4) {
 			RobotImage = "Bicho8.png";
-			AnchoRobot = 188;
+			AnchoRobot = 105;
 			AltoRobot = 125;
 		}
 		else if(RobotType == 5) {
@@ -128,7 +128,7 @@ public class MyRobot extends IRobot{
 			golpe2.setPosX(111);	
 		}
 		else if(RobotType == 4) {
-			golpe2.setPosX(90);	
+			golpe2.setPosX(60);	
 		}
 		else if(RobotType == 5) {
 			golpe2.setPosX(110);	
@@ -144,7 +144,7 @@ public class MyRobot extends IRobot{
 			disparo = new MyWeapon(2, 15, 10, 600);
 			this.addWeapon(disparo);
 		}	
-		disparo.setPosY(125);
+		disparo.setPosY(110);
 		if(RobotType == 1) {
 			disparo.setPosX(60);			
 		}
@@ -155,7 +155,7 @@ public class MyRobot extends IRobot{
 			disparo.setPosX(111);	
 		}
 		else if(RobotType == 4) {
-			disparo.setPosX(90);	
+			disparo.setPosX(60);	
 		}
 		else if(RobotType == 5) {
 			disparo.setPosX(110);	
@@ -836,6 +836,22 @@ public class MyRobot extends IRobot{
 				this.setEnergy(this.getEnergy() - 1);
 				this.contBalasDisparadas = 0;
 			}
+		}
+	}
+	
+	
+	public void revisarIsAlive() {
+		if(
+				(this.dirLeftEnable == false)&&
+				(this.dirRightEnable == false)&&
+				(this.dirUpEnable == false)&&
+				(this.dirDownEnable == false)&&
+				(((MyWeapon)this.getWeapon(0)).weaponEnable == false)&&
+				(((MyWeapon)this.getStrike(0)).weaponEnable == false)&&
+				(((MyWeapon)this.getStrike(1)).weaponEnable == false)
+			) 
+		{
+			this.isAlive = false;
 		}
 	}
 	

@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class MyWeapon extends Weapon{
-	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4\\src\\Imagen\\";
+	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4-2\\src\\Imagen\\";
 	public int WeaponType;
 	public boolean weaponEnable = true;
 	public float weaponHealth = 100;

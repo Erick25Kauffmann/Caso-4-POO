@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Menu {
-	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4\\src\\Imagen\\";
+	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4-2\\src\\Imagen\\";
 	public int dir = 0;
 	public int num1 = 0;
 	public int num2 = 0;
@@ -182,7 +182,7 @@ public class Menu {
 			//picLabel.setLocation(0, 600);
 			panel.add(picLabel4);
 			Dimension size4 = picLabel4.getPreferredSize();
-	        picLabel4.setBounds(600, 200, size4.width, size4.height);
+	        picLabel4.setBounds(650, 200, size4.width, size4.height);
 	        
 	        BufferedImage myPicture5 = null;
 			myPicture5 = ImageIO.read(new File(rutaImagenes + "Bicho9.png"));

@@ -18,6 +18,7 @@ public interface IConstants {
 	public static final int LADO_DERECHO = 2;
 	
 	public static final String COMANDO_CREAR_ROBOT = "crearRobot:";
+	public static final String COMANDO_CAMBIAR_POS = "cambiarPos:";
 	
 	public static final String COMANDO_CREAR_ROBOT_PARAM_TYPE = "Tipo:";
 	public static final String COMANDO_CREAR_ROBOT_PARAM_A1 = "Arma1:";

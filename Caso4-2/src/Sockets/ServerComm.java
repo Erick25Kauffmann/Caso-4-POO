@@ -106,6 +106,11 @@ public class ServerComm extends Thread{
 			        		System.out.println("Robot Rival Creado y Agregado");
 			        	}
 			        	
+			        	else if(esMensajeCambiarPos(inputLine)) {
+			        		leerInfoCambiarPos(inputLine);
+			        		System.out.println("Posicion Robot Rival Actualizada");
+			        	}
+			        	
 			        	if(inputLine.equals("izquierdo")) {
 			        		if(controlador.CurrentRobot != null) {
 			        		//System.out.println("izquierda: "+controlador.CurrentRobot.getPosX());
@@ -155,6 +160,12 @@ public class ServerComm extends Thread{
 			        			controlador.RobotPrueba.setOrientacion(ORIENTATION.SOUTH);
 			        		}
 			        	}
+			        	if(inputLine.equals("YouWin")) {
+			        		if(controlador.CurrentRobot != null) {
+			        			controlador.interfaz.Winner();
+			        			controlador.interfaz.RepaintRobots();
+			        		}
+			        	}
 			        	
 			        	
 				        if (".".equals(inputLine)) {
@@ -191,7 +202,29 @@ public class ServerComm extends Thread{
 	        	controlador.addRobot(Integer.parseInt(params[0]), Integer.parseInt(params[1]), Integer.parseInt(params[2]), Integer.parseInt(params[3]), 
 	        						 Integer.parseInt(params[4]), Integer.parseInt(params[5]), controlador.ladoInicial);
 	        	controlador.setRobotRival();
-	        	
+	        	controlador.reenviarPosRobot();
+	        }
+	        
+	        private boolean esMensajeCambiarPos(String inputLine) {
+	        	System.out.println("LLegó a esMensajeCambiarPos");
+	        	boolean result = false;
+	        	if(inputLine.startsWith(IConstants.COMANDO_CAMBIAR_POS)) {
+	        		result = true;	        		
+	        	}
+	        	return result;
+	        }
+	        
+	        private void leerInfoCambiarPos(String inputLine) {
+	        	System.out.println("LLegó a leerInfoRobot");
+	        	String tempLine = inputLine.replace(IConstants.COMANDO_CAMBIAR_POS, "").replace("{", "").replace("}", "");
+	        	System.out.println("Pasó tempLine");
+	        	String []params = tempLine.split(",");
+	        	params[0] = params[0].replace(IConstants.COMANDO_CREAR_ROBOT_PARAM_POSX, "");
+	        	params[1] = params[1].replace(IConstants.COMANDO_CREAR_ROBOT_PARAM_POSY, "");
+	        	if(controlador.RobotPrueba != null) {
+		        	controlador.RobotPrueba.setPosX(Integer.parseInt(params[0]));
+		        	controlador.RobotPrueba.setPosY(Integer.parseInt(params[1]));
+	        	}
 	        }
 	        
 	        

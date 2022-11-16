@@ -151,13 +151,20 @@ public class Controller implements KeyListener {
 						}
 						CurrentRobot.moverRobotAbajo();
 					}
-				}
-				moverDisparos();
-				if (CurrentRobot.disparar) {
-					if(client!=null) {
-						client.sendMessage("disparo");
+				
+					moverDisparos();
+					if (CurrentRobot.disparar) {
+						if(client!=null) {
+							client.sendMessage("disparo");
+						}
+						CurrentRobot.disparar();
 					}
-					CurrentRobot.disparar();
+				}
+				else {
+					if(client!=null) {
+						client.sendMessage("YouWin");
+					}
+					break;
 				}
 				
 				RevisarGolpe();
@@ -187,9 +194,13 @@ public class Controller implements KeyListener {
 				}
 				interfaz.RepaintRobots();
 				interfaz.RevalidateInfoRobot(CurrentRobot);
+				CurrentRobot.revisarIsAlive();
 			}
 		}
-		
+		System.out.println("Perdio");
+		interfaz.GameOver();
+		interfaz.RepaintRobots();
+
 	}
 	
 	
@@ -249,6 +260,25 @@ public class Controller implements KeyListener {
 		}
 		else {
 			this.RobotPrueba = null;
+		}
+	}
+	
+	
+	public String mensajeCambiarPos() {
+		String result = "";	
+		result = result.concat(IConstants.COMANDO_CAMBIAR_POS).concat("{");
+		result = result.concat(IConstants.COMANDO_CREAR_ROBOT_PARAM_POSX).concat(Integer.toString(CurrentRobot.getPosX())).concat(",");
+		result = result.concat(IConstants.COMANDO_CREAR_ROBOT_PARAM_POSY).concat(Integer.toString(CurrentRobot.getPosY()));
+		result = result.concat("}");
+		return result;
+	}
+	
+	
+	public void reenviarPosRobot() {
+		if((CurrentRobot != null)&&(RobotPrueba != null)) {
+			if(client != null) {
+				client.sendMessage(mensajeCambiarPos());
+			}
 		}
 	}
 	

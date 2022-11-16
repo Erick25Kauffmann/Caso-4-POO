@@ -33,7 +33,7 @@ import javax.swing.JLabel;
 
 public class CicloTiempo {
 
-	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4\\src\\Imagen\\";
+	public static String rutaImagenes = "C:\\Users\\Erick Kauffmann\\eclipse-workspace\\Caso4-2\\src\\Imagen\\";
 	public int dir = 0;
 	public boolean dirIzq = false;
 	public boolean dirDer = false;
@@ -265,6 +265,32 @@ public class CicloTiempo {
 		}
 	}
 	
+	
+	public void GameOver() {
+		try {
+			BufferedImage myPicture = null;
+			myPicture = ImageIO.read(new File(rutaImagenes + "GameOver.png"));
+			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+			panelPrincipal.add(picLabel, 0);
+			Dimension size = picLabel.getPreferredSize();
+	        picLabel.setBounds(250, 0, size.width, size.height);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void Winner() {
+		try {
+			BufferedImage myPicture = null;
+			myPicture = ImageIO.read(new File(rutaImagenes + "Winner.png"));
+			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+			panelPrincipal.add(picLabel, 0);
+			Dimension size = picLabel.getPreferredSize();
+	        picLabel.setBounds(200, 130, size.width, size.height);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	/*private void mostrarTrampas(JPanel panel) {
 		
