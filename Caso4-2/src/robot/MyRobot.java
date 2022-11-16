@@ -46,13 +46,15 @@ public class MyRobot extends IRobot{
 	
 	public MyRobot(int NomRobot, int weapon, int strike1, int strike2, int ladoInicial) {
 		super();
-		if(ladoInicial == LADO_IZQUIERDO) {
-			this.posX = INITIALPOSXI;
-			this.posY = INITIALPOSYI;
+		if(ladoInicial == IConstants.LADO_IZQUIERDO) {
+			System.out.println("lado en creacion de robot: " + ladoInicial);
+			this.posX = IConstants.INITIALPOSXI;
+			this.posY = IConstants.INITIALPOSYI;
 		}
 		else {
-			this.posX = INITIALPOSXD;
-			this.posY = INITIALPOSYD;
+			System.out.println("lado en creacion de robot: " + ladoInicial);
+			this.posX = IConstants.INITIALPOSXD;
+			this.posY = IConstants.INITIALPOSYD;
 		}
 		this.energy = 100;
 		this.RobotType = NomRobot;
@@ -588,6 +590,256 @@ public class MyRobot extends IRobot{
 		}
 		
 	}
+	
+	
+	public void moverRobotIzquierda() {
+		if(this.getPosX()<=-50) {
+			
+		}
+		else {
+			//RobotPrueba.setPosX(RobotPrueba.getPosX() + 20);
+			//RobotPrueba.contDistanciaRecorrida += 20;
+			//RobotPrueba2.setPosY(RobotPrueba2.getPosY() + 20);
+			//RobotPrueba3.setPosY(RobotPrueba3.getPosY() - 20);
+			this.setPosX(this.getPosX() - 20);
+			this.contDistanciaRecorrida += 20;
+			System.out.println("funciona mover izquierda");
+			System.out.println("Robot tipo: " + this.RobotType);
+			if(this.contDistanciaRecorrida >= 1000) {
+				if(this.getEnergy() > 0) {
+					this.setEnergy(this.getEnergy() - 1);
+					this.contDistanciaRecorrida = 0;
+				}
+			}
+			if(this.getEnergy() == 0) {
+				this.isAlive = false;
+			}
+			
+			if((this.getPosX()>=950)&&(this.getPosX()<=1170)&&(this.getPosY()<=90)&&(this.getPosY()>-10)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=585)&&(this.getPosX()>=1550)&&(this.getPosX()<=2200)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()<=50)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()>=2270)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			
+		}
+	}
+	
+	
+	public void moverRobotDerecha() {
+		if(this.getPosX()>=2400/*1200*/) {
+			
+		}
+		else {
+			//RobotPrueba.setPosX(RobotPrueba.getPosX() - 20);
+			//RobotPrueba.contDistanciaRecorrida += 20;
+			//RobotPrueba2.setPosY(RobotPrueba2.getPosY() - 20);
+			//RobotPrueba3.setPosY(RobotPrueba3.getPosY() + 20);
+			this.setPosX(this.getPosX() + 20);
+			this.contDistanciaRecorrida += 20;
+			if(this.contDistanciaRecorrida >= 1000) {
+				if(this.getEnergy() > 0) {
+					this.setEnergy(this.getEnergy() - 1);
+					this.contDistanciaRecorrida = 0;
+				}
+			}
+			if(this.getEnergy() == 0) {
+				this.isAlive = false;
+			}							
+			
+			if((this.getPosX()>=950)&&(this.getPosX()<=1170)&&(this.getPosY()<=90)&&(this.getPosY()>-10)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=585)&&(this.getPosX()>=1550)&&(this.getPosX()<=2200)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()<=50)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()>=2270)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			
+		}
+	}
+	
+	
+	public void moverRobotArriba() {
+		if(this.getPosY()<=-50) {
+			
+		}
+		else {
+			//RobotPrueba.setPosY(RobotPrueba.getPosY() + 20);
+			//RobotPrueba.contDistanciaRecorrida += 20;
+			//RobotPrueba2.setPosX(RobotPrueba2.getPosX() + 20);
+			//RobotPrueba3.setPosX(RobotPrueba3.getPosX() - 20);
+			this.setPosY(this.getPosY() - 20);
+			this.contDistanciaRecorrida += 20;
+			if(this.contDistanciaRecorrida >= 1000) {
+				if(this.getEnergy() > 0) {
+					this.setEnergy(this.getEnergy() - 1);
+					this.contDistanciaRecorrida = 0;
+				}
+			}
+			if(this.getEnergy() == 0) {
+				this.isAlive = false;
+			}
+			
+			if((this.getPosX()>=950)&&(this.getPosX()<=1170)&&(this.getPosY()<=90)&&(this.getPosY()>-10)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=585)&&(this.getPosX()>=1550)&&(this.getPosX()<=2200)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()<=50)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()>=2270)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			
+		}
+	}
+	
+	
+	public void moverRobotAbajo() {
+		if(this.getPosY()>=700) {
+			
+		}
+		else {
+			//RobotPrueba.setPosY(RobotPrueba.getPosY() - 20);
+			//RobotPrueba.contDistanciaRecorrida += 20;
+			//RobotPrueba2.setPosX(RobotPrueba2.getPosX() - 20);
+			//RobotPrueba3.setPosX(RobotPrueba3.getPosX() + 20);
+			this.setPosY(this.getPosY() + 20);
+			this.contDistanciaRecorrida += 20;
+			if(this.contDistanciaRecorrida >= 1000) {
+				if(this.getEnergy() > 0) {
+					this.setEnergy(this.getEnergy() - 1);
+					this.contDistanciaRecorrida = 0;
+				}
+			}
+			if(this.getEnergy() == 0) {
+				this.isAlive = false;
+			}
+			
+			if((this.getPosX()>=950)&&(this.getPosX()<=1170)&&(this.getPosY()<=90)&&(this.getPosY()>-10)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=585)&&(this.getPosX()>=1550)&&(this.getPosX()<=2200)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()<=50)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			else if((this.getPosY()>=100)&&(this.getPosY()<=500)&&(this.getPosX()>=2270)) {
+				if(this.getEnergy() >= 5) {
+					this.setEnergy(this.getEnergy() - 5);
+				}
+				else {
+					this.setEnergy(this.getEnergy() - this.getEnergy());
+				}
+			}
+			
+		}
+	}
+	
+	
+	public void disparar() {
+		MyWeapon Arma = ((MyWeapon) this.getWeapon(0));
+		Bala bala = new Bala(Arma.WeaponType, this.getPosXReal()+Arma.getPosX(), this.getPosY()+Arma.getPosY(), this.getOrientacion());
+		Arma.disparos.add(bala);
+		this.contBalasDisparadas += 1;
+		if(this.contBalasDisparadas >= 50) {
+			if(this.getEnergy() > 0) {
+				this.setEnergy(this.getEnergy() - 1);
+				this.contBalasDisparadas = 0;
+			}
+		}
+	}
+	
+	
 	
 	public void RebajarIsGolpeado() {
 		if(this.IsGolpeado > 0) {

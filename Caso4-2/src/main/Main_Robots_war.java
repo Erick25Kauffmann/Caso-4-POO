@@ -21,8 +21,12 @@ public class Main_Robots_war {
 			puertoClient = args[2];
 		}
 		if(args.length > 3) {
-			if(args[3] == "D") {
+			if(args[3].compareTo("D") == 0) {
+				System.out.println("Parametro lado: derecho");
 				pantallaSide = IConstants.LADO_DERECHO;
+			}
+			else {
+				System.out.println("Parametro lado: izqierdo");
 			}
 		}
         

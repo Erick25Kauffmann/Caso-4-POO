@@ -69,6 +69,7 @@ public class Controller implements KeyListener {
 		
 		
 		interfaz.CrearInterfaz(ListaRobots);
+		interfaz.cambiarLado();
 		controlarRobot();
 		
 		
@@ -78,8 +79,8 @@ public class Controller implements KeyListener {
 	
 	public void addRobot(int NumRobot, int NumWeapon, int NumStrike1, int NumStrike2, int PosX, int PosY, int ladoInicial) {
 		IRobot myRobot = new MyRobot(NumRobot, NumWeapon, NumStrike1, NumStrike2, ladoInicial);
-		//((MyRobot) myRobot).setPosX(PosX);
-		//((MyRobot) myRobot).setPosY(PosY);
+		((MyRobot) myRobot).setPosX(PosX);
+		((MyRobot) myRobot).setPosY(PosY);
 		ListaRobots.add(myRobot);
 		
 	}
@@ -130,254 +131,33 @@ public class Controller implements KeyListener {
 						if(client!=null) {
 							client.sendMessage("izquierdo");
 						}
-						System.out.println("funciona izquierda");
-						if(CurrentRobot.getPosX()<=-50) {
-							
-						}
-						else {
-							//RobotPrueba.setPosX(RobotPrueba.getPosX() + 20);
-							//RobotPrueba.contDistanciaRecorrida += 20;
-							//RobotPrueba2.setPosY(RobotPrueba2.getPosY() + 20);
-							//RobotPrueba3.setPosY(RobotPrueba3.getPosY() - 20);
-							CurrentRobot.setPosX(CurrentRobot.getPosX() - 20);
-							CurrentRobot.contDistanciaRecorrida += 20;
-							System.out.println("funciona mover izquierda");
-							System.out.println("Robot tipo: " + CurrentRobot.RobotType);
-							if(CurrentRobot.contDistanciaRecorrida >= 1000) {
-								if(CurrentRobot.getEnergy() > 0) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 1);
-									CurrentRobot.contDistanciaRecorrida = 0;
-								}
-							}
-							if(CurrentRobot.getEnergy() == 0) {
-								CurrentRobot.isAlive = false;
-							}
-							
-							if((CurrentRobot.getPosX()>=950)&&(CurrentRobot.getPosX()<=1170)&&(CurrentRobot.getPosY()<=90)&&(CurrentRobot.getPosY()>-10)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=585)&&(CurrentRobot.getPosX()>=1550)&&(CurrentRobot.getPosX()<=2200)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()<=50)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()>=2270)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							
-						}
+						CurrentRobot.moverRobotIzquierda();
 					}
 					else if(CurrentRobot.dirDerecha) {
 						if(client!=null) {
 							client.sendMessage("derecho");
 						}
-						if(CurrentRobot.getPosX()>=2400/*1200*/) {
-		
-						}
-						else {
-							//RobotPrueba.setPosX(RobotPrueba.getPosX() - 20);
-							//RobotPrueba.contDistanciaRecorrida += 20;
-							//RobotPrueba2.setPosY(RobotPrueba2.getPosY() - 20);
-							//RobotPrueba3.setPosY(RobotPrueba3.getPosY() + 20);
-							CurrentRobot.setPosX(CurrentRobot.getPosX() + 20);
-							CurrentRobot.contDistanciaRecorrida += 20;
-							if(CurrentRobot.contDistanciaRecorrida >= 1000) {
-								if(CurrentRobot.getEnergy() > 0) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 1);
-									CurrentRobot.contDistanciaRecorrida = 0;
-								}
-							}
-							if(CurrentRobot.getEnergy() == 0) {
-								CurrentRobot.isAlive = false;
-							}							
-							
-							if((CurrentRobot.getPosX()>=950)&&(CurrentRobot.getPosX()<=1170)&&(CurrentRobot.getPosY()<=90)&&(CurrentRobot.getPosY()>-10)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=585)&&(CurrentRobot.getPosX()>=1550)&&(CurrentRobot.getPosX()<=2200)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()<=50)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()>=2270)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							
-						}
+						CurrentRobot.moverRobotDerecha();
 					}
 					else if(CurrentRobot.dirArriba) {
 						if(client!=null) {
 							client.sendMessage("arriba");
 						}
-						if(CurrentRobot.getPosY()<=-50) {
-		
-						}
-						else {
-							//RobotPrueba.setPosY(RobotPrueba.getPosY() + 20);
-							//RobotPrueba.contDistanciaRecorrida += 20;
-							//RobotPrueba2.setPosX(RobotPrueba2.getPosX() + 20);
-							//RobotPrueba3.setPosX(RobotPrueba3.getPosX() - 20);
-							CurrentRobot.setPosY(CurrentRobot.getPosY() - 20);
-							CurrentRobot.contDistanciaRecorrida += 20;
-							if(CurrentRobot.contDistanciaRecorrida >= 1000) {
-								if(CurrentRobot.getEnergy() > 0) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 1);
-									CurrentRobot.contDistanciaRecorrida = 0;
-								}
-							}
-							if(CurrentRobot.getEnergy() == 0) {
-								CurrentRobot.isAlive = false;
-							}
-							
-							if((CurrentRobot.getPosX()>=950)&&(CurrentRobot.getPosX()<=1170)&&(CurrentRobot.getPosY()<=90)&&(CurrentRobot.getPosY()>-10)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=585)&&(CurrentRobot.getPosX()>=1550)&&(CurrentRobot.getPosX()<=2200)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()<=50)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()>=2270)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							
-						}
+						CurrentRobot.moverRobotArriba();
 					}
 					else if(CurrentRobot.dirAbajo) {
 						if(client!=null) {
 							client.sendMessage("abajo");
 						}
-						if(CurrentRobot.getPosY()>=700) {
-		
-						}
-						else {
-							//RobotPrueba.setPosY(RobotPrueba.getPosY() - 20);
-							//RobotPrueba.contDistanciaRecorrida += 20;
-							//RobotPrueba2.setPosX(RobotPrueba2.getPosX() - 20);
-							//RobotPrueba3.setPosX(RobotPrueba3.getPosX() + 20);
-							CurrentRobot.setPosY(CurrentRobot.getPosY() + 20);
-							CurrentRobot.contDistanciaRecorrida += 20;
-							if(CurrentRobot.contDistanciaRecorrida >= 1000) {
-								if(CurrentRobot.getEnergy() > 0) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 1);
-									CurrentRobot.contDistanciaRecorrida = 0;
-								}
-							}
-							if(CurrentRobot.getEnergy() == 0) {
-								CurrentRobot.isAlive = false;
-							}
-							
-							if((CurrentRobot.getPosX()>=950)&&(CurrentRobot.getPosX()<=1170)&&(CurrentRobot.getPosY()<=90)&&(CurrentRobot.getPosY()>-10)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=585)&&(CurrentRobot.getPosX()>=1550)&&(CurrentRobot.getPosX()<=2200)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()<=50)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							else if((CurrentRobot.getPosY()>=100)&&(CurrentRobot.getPosY()<=500)&&(CurrentRobot.getPosX()>=2270)) {
-								if(CurrentRobot.getEnergy() >= 5) {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 5);
-								}
-								else {
-									CurrentRobot.setEnergy(CurrentRobot.getEnergy() - CurrentRobot.getEnergy());
-								}
-							}
-							
-						}
+						CurrentRobot.moverRobotAbajo();
 					}
 				}
 				moverDisparos();
-				if (CurrentRobot.disparar) {		
-					MyWeapon Arma = ((MyWeapon) CurrentRobot.getWeapon(0));
-					Bala bala = new Bala(Arma.WeaponType, CurrentRobot.getPosXReal()+Arma.getPosX(), CurrentRobot.getPosY()+Arma.getPosY(), CurrentRobot.getOrientacion());
-					Arma.disparos.add(bala);
-					CurrentRobot.contBalasDisparadas += 1;
-					if(CurrentRobot.contBalasDisparadas >= 50) {
-						if(CurrentRobot.getEnergy() > 0) {
-							CurrentRobot.setEnergy(CurrentRobot.getEnergy() - 1);
-							CurrentRobot.contBalasDisparadas = 0;
-						}
+				if (CurrentRobot.disparar) {
+					if(client!=null) {
+						client.sendMessage("disparo");
 					}
+					CurrentRobot.disparar();
 				}
 				
 				RevisarGolpe();
@@ -489,6 +269,9 @@ public class Controller implements KeyListener {
 			    		CurrentRobot.dirIzquierda = true;
 			    	}
 			    	CurrentRobot.setOrientacion(ORIENTATION.WEST);
+			    	if(client!=null) {
+						client.sendMessage("OrientacionWest");
+					}
 		    	}
 		    }
 	
@@ -498,6 +281,9 @@ public class Controller implements KeyListener {
 			    		CurrentRobot.dirDerecha = true;
 			    	}
 			    	CurrentRobot.setOrientacion(ORIENTATION.EAST);
+			    	if(client!=null) {
+						client.sendMessage("OrientacionEast");
+					}
 		    	}
 		    }
 	
@@ -507,6 +293,9 @@ public class Controller implements KeyListener {
 			    		CurrentRobot.dirArriba = true;
 			    	}
 			    	CurrentRobot.setOrientacion(ORIENTATION.NORTH);
+			    	if(client!=null) {
+						client.sendMessage("OrientacionNorth");
+					}
 		    	}
 		    }
 	
@@ -516,6 +305,9 @@ public class Controller implements KeyListener {
 			    		CurrentRobot.dirAbajo = true;
 			    	}
 			    	CurrentRobot.setOrientacion(ORIENTATION.SOUTH);
+			    	if(client!=null) {
+						client.sendMessage("OrientacionSouth");
+					}
 		    	}    	
 		    }
 		    

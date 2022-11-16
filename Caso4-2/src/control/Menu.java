@@ -124,6 +124,7 @@ public class Menu {
 		System.out.println("Arma2: " + num2);
 		System.out.println("Arma3: " + num3);
 		
+		System.out.println("Menu lado: " + mControlador.ladoInicial);
 		mControlador.addRobotPos(0, RobotNum, num1, num2, num3, mControlador.ladoInicial);
 		//mControlador.addRobot(2, 1, 3, 4);
 		//mControlador.addRobot(6, 1, 3, 4);

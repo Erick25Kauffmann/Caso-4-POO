@@ -10,6 +10,7 @@ import java.net.Socket;
 import control.Controller;
 import robot.IConstants;
 import robot.MyRobot;
+import robot.ORIENTATION;
 
 public class ServerComm extends Thread{
 	private ServerSocket serverSocket;
@@ -108,29 +109,50 @@ public class ServerComm extends Thread{
 			        	if(inputLine.equals("izquierdo")) {
 			        		if(controlador.CurrentRobot != null) {
 			        		//System.out.println("izquierda: "+controlador.CurrentRobot.getPosX());
-			        		controlador.RobotPrueba.setPosX(controlador.RobotPrueba.getPosX() - 20);
-							controlador.RobotPrueba.contDistanciaRecorrida += 20;
+			        		controlador.RobotPrueba.moverRobotIzquierda();
 			        		}
 			        	}
 			        	if(inputLine.equals("derecho")) {
 			        		if(controlador.CurrentRobot != null) {
 			        		//System.out.println("derecha: "+controlador.CurrentRobot.getPosX());
-			        		controlador.RobotPrueba.setPosX(controlador.RobotPrueba.getPosX() + 20);
-							controlador.RobotPrueba.contDistanciaRecorrida += 20;
+			        		controlador.RobotPrueba.moverRobotDerecha();
 			        		}
 			        	}
 			        	if(inputLine.equals("arriba")) {
 			        		if(controlador.CurrentRobot != null) {
 			        		//System.out.println("arriba: "+controlador.CurrentRobot.getPosY());
-			        		controlador.RobotPrueba.setPosY(controlador.RobotPrueba.getPosY() - 20);
-							controlador.RobotPrueba.contDistanciaRecorrida += 20;
+			        		controlador.RobotPrueba.moverRobotArriba();
 			        		}
 			        	}
 			        	if(inputLine.equals("abajo")) {
 			        		if(controlador.CurrentRobot != null) {
 			        		//System.out.println("abajo: "+controlador.CurrentRobot.getPosY());
-			        		controlador.RobotPrueba.setPosY(controlador.RobotPrueba.getPosY() + 20);
-							controlador.RobotPrueba.contDistanciaRecorrida += 20;
+			        		controlador.RobotPrueba.moverRobotAbajo();
+			        		}
+			        	}
+			        	if(inputLine.equals("disparo")) {
+			        		if(controlador.CurrentRobot != null) {
+			        			controlador.RobotPrueba.disparar();
+			        		}
+			        	}
+			        	if(inputLine.equals("OrientacionWest")) {
+			        		if(controlador.CurrentRobot != null) {
+			        			controlador.RobotPrueba.setOrientacion(ORIENTATION.WEST);
+			        		}
+			        	}
+			        	if(inputLine.equals("OrientacionEast")) {
+			        		if(controlador.CurrentRobot != null) {
+			        			controlador.RobotPrueba.setOrientacion(ORIENTATION.EAST);
+			        		}
+			        	}
+			        	if(inputLine.equals("OrientacionNorth")) {
+			        		if(controlador.CurrentRobot != null) {
+			        			controlador.RobotPrueba.setOrientacion(ORIENTATION.NORTH);
+			        		}
+			        	}
+			        	if(inputLine.equals("OrientacionSouth")) {
+			        		if(controlador.CurrentRobot != null) {
+			        			controlador.RobotPrueba.setOrientacion(ORIENTATION.SOUTH);
 			        		}
 			        	}
 			        	
